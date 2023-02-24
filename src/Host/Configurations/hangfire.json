@@ -20,9 +20,7 @@
       "WorkerCount": 5
     },
     "Storage": {
-      //"StorageProvider": "mssql",
       "StorageProvider": "mysql",
-      //"ConnectionString": "Data Source=(localdb)\\mssqllocaldb;Initial Catalog=fullStackHeroDb;Integrated Security=True;MultipleActiveResultSets=True",
       "ConnectionString": "server=127.0.0.1;uid=root;pwd=123456;database=test",
       "Options": {
         "CommandBatchMaxTimeout": "00:05:00",
