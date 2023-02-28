@@ -11,15 +11,15 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Migrators.MySQL.Migrations.Application
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220125214534_InitialMigrations")]
-    partial class InitialMigrations
+    [Migration("20230228080954_stary")]
+    partial class stary
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasDefaultSchema("Catalog")
-                .HasAnnotation("ProductVersion", "6.0.1")
+                .HasDefaultSchema("MetaTrader")
+                .HasAnnotation("ProductVersion", "6.0.5")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
             modelBuilder.Entity("FSH.WebApi.Domain.Catalog.Brand", b =>
@@ -61,7 +61,7 @@ namespace Migrators.MySQL.Migrations.Application
 
                     b.HasKey("Id");
 
-                    b.ToTable("Brands", "Catalog");
+                    b.ToTable("Brands", "MetaTrader");
 
                     b.HasAnnotation("Finbuckle:MultiTenant", true);
                 });
@@ -117,9 +117,143 @@ namespace Migrators.MySQL.Migrations.Application
 
                     b.HasIndex("BrandId");
 
-                    b.ToTable("Products", "Catalog");
+                    b.ToTable("Products", "MetaTrader");
 
                     b.HasAnnotation("Finbuckle:MultiTenant", true);
+                });
+
+            modelBuilder.Entity("FSH.WebApi.Domain.MetaTrader4.TradeAccount", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)");
+
+                    b.Property<double>("Balance")
+                        .HasColumnType("double");
+
+                    b.Property<long>("BrokerID")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Comment")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Configuration")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<Guid>("CreatedBy")
+                        .HasColumnType("char(36)");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<double>("Credit")
+                        .HasColumnType("double");
+
+                    b.Property<int>("Currency")
+                        .HasColumnType("int");
+
+                    b.Property<Guid?>("DeletedBy")
+                        .HasColumnType("char(36)");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<double>("Equity")
+                        .HasColumnType("double");
+
+                    b.Property<int>("Flags")
+                        .HasColumnType("int");
+
+                    b.Property<double>("FreeMargin")
+                        .HasColumnType("double");
+
+                    b.Property<double>("FreeMarginPercent")
+                        .HasColumnType("double");
+
+                    b.Property<string>("Group")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<TimeSpan>("InactivityLimit")
+                        .HasColumnType("time(6)");
+
+                    b.Property<double>("InterestRate")
+                        .HasColumnType("double");
+
+                    b.Property<Guid>("LastModifiedBy")
+                        .HasColumnType("char(36)");
+
+                    b.Property<DateTime?>("LastModifiedOn")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int>("Leverage")
+                        .HasColumnType("int");
+
+                    b.Property<double>("Margin")
+                        .HasColumnType("double");
+
+                    b.Property<int>("MarginCalculationMode")
+                        .HasColumnType("int");
+
+                    b.Property<int>("MarginStopOutCalculationMode")
+                        .HasColumnType("int");
+
+                    b.Property<int>("MarginStopOutMode")
+                        .HasColumnType("int");
+
+                    b.Property<double>("MarginStopout")
+                        .HasColumnType("double");
+
+                    b.Property<double>("MarginWarningPercent")
+                        .HasColumnType("double");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<double>("NotifyLevel")
+                        .HasColumnType("double");
+
+                    b.Property<int>("OrderPriority")
+                        .HasColumnType("int");
+
+                    b.Property<double>("OrderQuantityMaximum")
+                        .HasColumnType("double");
+
+                    b.Property<double>("OrderQuantityMinimum")
+                        .HasColumnType("double");
+
+                    b.Property<double>("OrderQuantityStep")
+                        .HasColumnType("double");
+
+                    b.Property<string>("Owner")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<double>("Profit")
+                        .HasColumnType("double");
+
+                    b.Property<DateTime>("Timestamp")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<TimeSpan>("TradeConfirmationTimeout")
+                        .HasColumnType("time(6)");
+
+                    b.Property<uint>("TradeCountMax")
+                        .HasColumnType("int unsigned");
+
+                    b.Property<int>("Type")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("TradeAccounts", "MetaTrader");
                 });
 
             modelBuilder.Entity("FSH.WebApi.Infrastructure.Auditing.Trail", b =>
@@ -216,18 +350,6 @@ namespace Migrators.MySQL.Migrations.Application
                         .HasColumnType("longtext");
 
                     b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<string>("Description")
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("Group")
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("LastModifiedBy")
-                        .HasColumnType("longtext");
-
-                    b.Property<DateTime?>("LastModifiedOn")
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("RoleId")

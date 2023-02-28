@@ -126,11 +126,31 @@ namespace Migrators.MySQL.Migrations.Application
                         .ValueGeneratedOnAdd()
                         .HasColumnType("char(36)");
 
+                    b.Property<double>("Balance")
+                        .HasColumnType("double");
+
+                    b.Property<long>("BrokerID")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Comment")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("Configuration")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
                     b.Property<Guid>("CreatedBy")
                         .HasColumnType("char(36)");
 
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("datetime(6)");
+
+                    b.Property<double>("Credit")
+                        .HasColumnType("double");
+
+                    b.Property<int>("Currency")
+                        .HasColumnType("int");
 
                     b.Property<Guid?>("DeletedBy")
                         .HasColumnType("char(36)");
@@ -138,7 +158,30 @@ namespace Migrators.MySQL.Migrations.Application
                     b.Property<DateTime?>("DeletedOn")
                         .HasColumnType("datetime(6)");
 
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
                     b.Property<double>("Equity")
+                        .HasColumnType("double");
+
+                    b.Property<int>("Flags")
+                        .HasColumnType("int");
+
+                    b.Property<double>("FreeMargin")
+                        .HasColumnType("double");
+
+                    b.Property<double>("FreeMarginPercent")
+                        .HasColumnType("double");
+
+                    b.Property<string>("Group")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<TimeSpan>("InactivityLimit")
+                        .HasColumnType("time(6)");
+
+                    b.Property<double>("InterestRate")
                         .HasColumnType("double");
 
                     b.Property<Guid>("LastModifiedBy")
@@ -147,19 +190,64 @@ namespace Migrators.MySQL.Migrations.Application
                     b.Property<DateTime?>("LastModifiedOn")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<uint>("Login")
-                        .HasColumnType("int unsigned");
+                    b.Property<int>("Leverage")
+                        .HasColumnType("int");
 
                     b.Property<double>("Margin")
                         .HasColumnType("double");
 
-                    b.Property<string>("Password")
+                    b.Property<int>("MarginCalculationMode")
+                        .HasColumnType("int");
+
+                    b.Property<int>("MarginStopOutCalculationMode")
+                        .HasColumnType("int");
+
+                    b.Property<int>("MarginStopOutMode")
+                        .HasColumnType("int");
+
+                    b.Property<double>("MarginStopout")
+                        .HasColumnType("double");
+
+                    b.Property<double>("MarginWarningPercent")
+                        .HasColumnType("double");
+
+                    b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<string>("Server")
+                    b.Property<double>("NotifyLevel")
+                        .HasColumnType("double");
+
+                    b.Property<int>("OrderPriority")
+                        .HasColumnType("int");
+
+                    b.Property<double>("OrderQuantityMaximum")
+                        .HasColumnType("double");
+
+                    b.Property<double>("OrderQuantityMinimum")
+                        .HasColumnType("double");
+
+                    b.Property<double>("OrderQuantityStep")
+                        .HasColumnType("double");
+
+                    b.Property<string>("Owner")
                         .IsRequired()
                         .HasColumnType("longtext");
+
+                    b.Property<double>("Profit")
+                        .HasColumnType("double");
+
+                    b.Property<DateTime>("Timestamp")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<TimeSpan>("TradeConfirmationTimeout")
+                        .HasColumnType("time(6)");
+
+                    b.Property<uint>("TradeCountMax")
+                        .HasColumnType("int unsigned");
+
+                    b.Property<int>("Type")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 

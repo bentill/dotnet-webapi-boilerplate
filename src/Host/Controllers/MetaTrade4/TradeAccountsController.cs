@@ -14,11 +14,11 @@ public class TradeAccountsController : VersionedApiController
         return Mediator.Send(new GetTradeAccountRequest(id));
     }
 
-    [HttpPost("search")]
-    [MustHavePermission(FSHAction.Search, FSHResource.Brands)]
-    [OpenApiOperation("Search TradeAccounts using available filters.", "")]
-    public Task<PaginationResponse<TradeAccountDto>> SearchAsync(SearchTradeAccountsRequest request)
-    {
-        return Mediator.Send(request);
-    }
+    //[HttpPost("search")]
+    //[MustHavePermission(FSHAction.Search, FSHResource.Brands)]
+    //[OpenApiOperation("Search TradeAccounts using available filters.", "")]
+    //public Task<PaginationResponse<TradeAccountDto>> SearchAsync(SearchTradeAccountsRequest request)
+    //{
+    //    return Mediator.Send(request);
+    //}
 }

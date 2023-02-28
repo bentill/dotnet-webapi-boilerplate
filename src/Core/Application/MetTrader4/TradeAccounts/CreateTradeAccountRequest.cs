@@ -32,7 +32,7 @@ public class CreateTradeAccountRequestHandler : IRequestHandler<CreateTradeAccou
 
     public async Task<Guid> Handle(CreateTradeAccountRequest request, CancellationToken cancellationToken)
     {
-        var account = new TradeAccount(request.Login, request.Password, request.Server);
+        var account = new TradeAccount();
 
         await _repository.AddAsync(account, cancellationToken);
 
